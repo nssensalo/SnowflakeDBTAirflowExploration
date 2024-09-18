@@ -77,12 +77,23 @@ The Astronomer CLI is maintained with love by the Astronomer team. To report a b
 </p>
 </details>
 
+-------
 Results
 =======
-The scheduling is mostly setup in the `dbt_dag.py` file. After runs you can checkout the logs through the DAG cycle:
-![runs status](images/dbt-runs.png)
+The scheduling is mostly setup in the `dbt_dag.py` file. After runs you can scope the logs through the DAG cycle :
+
+Run log:
+
 ![run logs](images/dbt-runpic.png)
+
+Docker container :
+
 ![docker image](images/dbt-dockerpic.png)
+
+Run status : 
+
+![runs status](images/replacepic.png)
+
 
 
 
