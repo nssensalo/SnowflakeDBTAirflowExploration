@@ -1,4 +1,32 @@
-Overview
+Purpose
+=======
+The purpose of this project was to explore connecting and deploying these technologies. While I have experience with platforms like Databricks and I wanted to handle modeling and testing on dbt, using Snowflake as a warehouse and Airflow for scheduling. 
+
+Data
+====
+The data comes from the Snowflake sample dataset TPCH-SF1, tables ORDERS and LINEITEMS. I created the modeling chart below to show the relationships between the original source tables, the staging tables, and finally the data marts.
+
+![modeling schema](images/dbt-modeling.png)
+
+The Snowflake Warehouse,Databse,Schema:
+
+![snowflake schema](images/dbt-snowflake.png)
+
+And this is the DAG execution sequence of the job on from Airflow.
+
+![DAG diagram](images/dbt-graph.png)
+
+Business Problems Addressed
+===========================
+- Reduced redundancy with resusable functions ( Macros ) in dbt.
+- Automated validity with general and specific test to check for unique values for ids, dates within the appropriate range, null values, and checking for negative discount prices. 
+
+Astro-Airflow-Docker
+====================
+The project is running on the astro CLI. Astro is used as a layer on top of Airflow to streamline connections to data sources, databases, cloud platform, and pipeline tasks. More info and Astronomer set-up below. The end result is docker images for the different aspects of a project. 
+<details>
+  <summary>Astro</summary>
+  <p>Overview
 ========
 
 Welcome to Astronomer! This project was generated after you ran 'astro dev init' using the Astronomer CLI. This readme describes the contents of the project, as well as how to run Apache Airflow on your local machine.
@@ -46,3 +74,15 @@ Contact
 =======
 
 The Astronomer CLI is maintained with love by the Astronomer team. To report a bug or suggest a change, reach out to our support.
+</p>
+</details>
+
+Results
+=======
+The scheduling is mostly setup in the `dbt_dag.py` file. After runs you can checkout the logs through the DAG cycle:
+![runs status](images/dbt-runs.png)
+![run logs](images/dbt-runpic.png)
+![docker image](images/dbt-dockerpic.png)
+
+
+
